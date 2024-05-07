@@ -2,7 +2,7 @@ install:
 	poetry install
 
 gendiff:
-	poetry run python -m gendiff.scripts.gendiff
+	poetry run python -m gendif.scripts.gendif
 
 build:
 	poetry build
@@ -15,3 +15,6 @@ package-install:
 
 package-reinstall:
 	pip install --user --forse-reinstall dist/*.whl
+
+uninstall:
+	python3 -m pip uninstall hexlet-code

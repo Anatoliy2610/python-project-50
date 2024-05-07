@@ -1,1 +1,5 @@
-test.py/
+.venv/
+dist/
+gendif/__pycache__/
+gendifs/scripts/__pycache__/
+test
