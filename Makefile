@@ -2,7 +2,7 @@ install:
 	poetry install
 
 gendiff:
-	poetry run python -m gendif.scripts.gendif
+	poetry run python -m gendif.scripts.gendif -h
 
 build:
 	poetry build
