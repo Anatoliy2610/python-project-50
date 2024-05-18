@@ -21,4 +21,4 @@ def generate_diff(file1_path, file2_path):
         if item2 not in keys_first_file:
             result.append('+ ' + str(item2) + ': ' + str(second_file_value[item2]))
     result = '\n'.join(result)
-
+    return result
