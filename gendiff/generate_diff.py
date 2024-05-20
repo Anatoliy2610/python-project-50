@@ -1,24 +1,18 @@
-import json
+from open_file import get_sorted_file_json, get_sorted_file_yaml
+from parsing import get_parsing
 
 
 def generate_diff(file1_path, file2_path):
-    first_file_value = json.load(open(file1_path))
-    second_file_value = json.load(open(file2_path))
-    keys_first_file = sorted(list(first_file_value))
-    keys_second_file = sorted(list(second_file_value))
-    result = []
-    for item in keys_first_file:
-        if item in keys_second_file:
-            if first_file_value[item] == second_file_value [item]:
-                result.append('  ' + str(item) + ': ' + str(first_file_value[item]))
-            else:
-                result.append('- ' + str(item) + ': ' + str(first_file_value[item]))
-                result.append('+ ' + str(item) + ': ' + str(second_file_value[item]))
-        else:
-            result.append('- ' + str(item) +': ' + str(first_file_value[item]))
-
-    for item2 in keys_second_file:
-        if item2 not in keys_first_file:
-            result.append('+ ' + str(item2) + ': ' + str(second_file_value[item2]))
-    result = '\n'.join(result)
+    name_first_file = file1_path
+    if name_first_file[-2] == 'o':
+        first_file, second_file = get_sorted_file_json(file1_path, file2_path)
+    if name_first_file[-2] == 'm':
+        first_file, second_file = get_sorted_file_yaml(file1_path, file2_path)
+    parsing = get_parsing(first_file, second_file)
+    result = '{' + '\n' + '\n'.join(parsing)+ '\n' + '}'
     return result
+
+
+
+#print(generate_diff('tests/fixtures/file1.json', 'tests/fixtures/file2.json'))
+#print(generate_diff('tests/fixtures/file1.yaml', 'tests/fixtures/file2.yaml'))

@@ -1,5 +1,6 @@
 .venv/
+teststs/
 dist/
-gendif/__pycache__/
-gendifs/scripts/__pycache__/
-test
+gendiff/__pycache__/
+gendiff/scripts/__pycache__/
+gendiff/tests/__pycache__/
