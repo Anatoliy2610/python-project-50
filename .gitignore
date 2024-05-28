@@ -3,4 +3,5 @@ teststs/
 dist/
 gendiff/__pycache__/
 gendiff/scripts/__pycache__/
-gendiff/tests/__pycache__/
+tests/__pycache__/
+tests/__pycache__/
