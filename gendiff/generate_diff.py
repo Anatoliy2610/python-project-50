@@ -1,6 +1,6 @@
 from open_file import get_open_file_json, get_open_file_yaml
-from gendiff.formaters.format import choose_format
 from parsing import get_finding_diff
+from gendiff.formatters.choose_formatt import choose_formatt
 
 def generate_diff(file1_path, file2_path, stylish='stylish'):
     if file1_path[-4:] == 'json' and file2_path[-4:] == 'json':
@@ -13,7 +13,7 @@ def generate_diff(file1_path, file2_path, stylish='stylish'):
         first_file = get_open_file_yaml(file1_path)
         second_file = get_open_file_yaml(file2_path)
     parsing = get_finding_diff(first_file, second_file)
-    result = choose_format(parsing, stylish)
+    result = choose_formatt(parsing, stylish)
     return '{' + '\n' + '\n'.join(result)+ '\n' + '}'
 
 

@@ -9,7 +9,7 @@ def walk_to_tree(tree, depth=1, symbol='  ', res=[]):
     return res
 
 
-def format_stylish(tree, depth=0, symbol='  ', result=[]):
+def formatt_stylish(tree, depth=0, symbol='  ', result=[]):
     for item in tree.values():
         if item.get('children'):
             result.append(f"{symbol*depth}  {str(item.get('name')).lower()}: " + '{')
