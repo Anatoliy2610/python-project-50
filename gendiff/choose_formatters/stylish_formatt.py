@@ -34,10 +34,6 @@ def get_value_add(tree, depth=0, symbol=' ', num_symbols=4):
     return res
 
 
-def get_value_change():
-    pass
-
-
 def walk_to_one_tree(tree, depth=0, symbol=' ', num_symbols=4, res=[]):
     indent = symbol * num_symbols * depth
     for key in tree:
