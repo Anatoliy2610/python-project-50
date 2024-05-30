@@ -1,6 +1,7 @@
 import json
 import yaml
 
+
 def get_open_file_json(file_path):
     file = json.load(open(file_path, 'r'))
     return file
