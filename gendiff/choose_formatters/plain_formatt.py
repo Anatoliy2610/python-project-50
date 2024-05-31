@@ -14,11 +14,11 @@ def to_str(value):
         return f"'{str(value)}'"
 
 
-def to_old_val(tree):
+def old_val(tree):
     return tree['old_value']
 
 
-def to_new_val(tree):
+def new_val(tree):
     return tree['new_value']
 
 
@@ -41,22 +41,22 @@ def get_list_status_add(tree, strs=''):
 
 def get_list_status_change(tree, strs=''):
     res = []
-    if type(to_old_val(tree)) is dict and type(to_new_val(tree)) is not dict:
+    if type(old_val(tree)) is dict and type(new_val(tree)) is not dict:
         res.append(
             f"Property '{strs}' was updated. "
             f"From [complex value] "
             f"to {to_str(tree['new_value'])}")
-    elif type(to_old_val(tree)) is not dict and type(to_new_val(tree)) is dict:
+    elif type(old_val(tree)) is not dict and type(new_val(tree)) is dict:
         res.append(
             f"Property '{strs}' was updated. "
             f"From {to_str(tree['old_value'])} "
             f"to [complex value]")
-    elif type(to_old_val(tree)) is not dict and type(to_new_val(tree)) is not dict:
+    elif type(old_val(tree)) is not dict and type(new_val(tree)) is not dict:
         res.append(
             f"Property '{strs}' was updated. "
             f"From {to_str(tree['old_value'])} "
             f"to {to_str(tree['new_value'])}")
-    elif type(to_old_val(tree)) is dict and type(to_new_val(tree)) is dict:
+    elif type(old_val(tree)) is dict and type(new_val(tree)) is dict:
         res.append(
             f"Property '{strs}' was updated. "
             f"From [complex value] "
@@ -65,7 +65,7 @@ def get_list_status_change(tree, strs=''):
 
 
 def get_plain_formatt(tree, res_stroka='', ):
-    res=[]
+    res = []
     for key in tree:
         stroka = ''
         match tree[key]['status']:
