@@ -4,7 +4,9 @@ def to_str(value):
         False: 'false',
         None: 'null'
     }
-    if str(value) in values:
+    if type(value) is int:
+        return str(value)
+    elif value in values:
         return values[value]
     else:
         return str(value)
