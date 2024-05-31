@@ -8,5 +8,5 @@ def get_open_file_json(file_path):
 
 
 def get_open_file_yaml(file_path):
-    file = yaml.full_load(open(file_path, 'r'))
+    file = yaml.safe_load(open(file_path, 'r'))
     return file
