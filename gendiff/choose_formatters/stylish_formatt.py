@@ -4,7 +4,7 @@ def to_str(value):
         False: 'false',
         None: 'null'
     }
-    if value in values:
+    if str(value) in values:
         return values[value]
     else:
         return str(value)
