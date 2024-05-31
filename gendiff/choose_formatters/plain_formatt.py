@@ -11,7 +11,7 @@ def to_str(value):
     elif value in values:
         return values[value]
     else:
-        return str(value)
+        return f"'{str(value)}'"
 
 
 def to_old_val(tree):
