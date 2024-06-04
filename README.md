@@ -7,7 +7,7 @@
 
 # Вычислитель отличий
 1. проект представляет собой программу, которая определяет разницу между двумя структурами данных.
-2. установить проект себе можно прописав в командной строке:
+2. установить проект себе можно прописав команды в командной строке:
 - `git clone https://github.com/Anatoliy2610/python-project-50?tab=readme-ov-file`
 - `make build`
 - `make publish`
@@ -17,5 +17,6 @@
 - `gendiff tests/fixtures/file1.yaml tests/fixtures/file2.yaml` - сравнение двух плоских файлов формата yaml или yml
 - `gendiff tests/fixtures/file3.json tests/fixtures/file4.json` или `gendiff tests/fixtures/file3.yaml tests/fixtures/file4.jyaml` - сравнение двух файлов, имеющие вложенную структуру формата json или yaml
 - `gendiff --format plain tests/fixtures/file3.json tests/fixtures/file4.json` - сравнение двух файлов, вывод которых осуществляется в формате plain
-- `gendiff --format jsontests/fixtures/file3.json tests/fixtures/file4.json` - сравнение двух файлов, вывод которых осуществляется в формате json
-[![asciicast](https://asciinema.org)](https://asciinema.org/a/tSxccgAsHLbELPbfxyOgGF1De)
+- `gendiff --format json tests/fixtures/file3.json tests/fixtures/file4.json` - сравнение двух файлов, вывод которых осуществляется в формате json
+**Видео:**
+[![asciicast](https://asciinema.org/a/tSxccgAsHLbELPbfxyOgGF1De.svg)](https://asciinema.org/a/tSxccgAsHLbELPbfxyOgGF1De)

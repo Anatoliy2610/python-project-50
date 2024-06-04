@@ -1,3 +1,6 @@
+NUM_SYMBOLS = 4
+
+
 def to_str(value):
     values = {
         True: 'true',
@@ -12,8 +15,8 @@ def to_str(value):
         return str(value)
 
 
-def walk_to_one_tree(tree, depth=0, symbol=' ', num_symbols=4):
-    indent = symbol * num_symbols * depth
+def walk_to_one_tree(tree, depth=0, symbol=' '):
+    indent = symbol * NUM_SYMBOLS * depth
     res = []
     for key in tree:
         if type(tree[key]) is dict:
@@ -25,8 +28,8 @@ def walk_to_one_tree(tree, depth=0, symbol=' ', num_symbols=4):
     return res
 
 
-def get_value_delete(tree, key, depth=0, symbol=' ', num_symbols=4):
-    indent = symbol * num_symbols * depth
+def get_value_delete(tree, key, depth=0, symbol=' '):
+    indent = symbol * NUM_SYMBOLS * depth
     res = []
     if isinstance(tree['value'], dict):
         res.append(f"{indent}  - {to_str(key)}: " + '{')
@@ -37,8 +40,8 @@ def get_value_delete(tree, key, depth=0, symbol=' ', num_symbols=4):
     return res
 
 
-def get_value_add(tree, key, depth=0, symbol=' ', num_symbols=4):
-    indent = symbol * num_symbols * depth
+def get_value_add(tree, key, depth=0, symbol=' '):
+    indent = symbol * NUM_SYMBOLS * depth
     res = []
     if isinstance(tree['value'], dict):
         res.append(f"{indent}  + {key}: " + '{')
@@ -49,8 +52,8 @@ def get_value_add(tree, key, depth=0, symbol=' ', num_symbols=4):
     return res
 
 
-def get_value_change(tree, key, depth=0, symbol=' ', num_symbols=4):
-    indent = symbol * num_symbols * depth
+def get_value_change(tree, key, depth=0, symbol=' '):
+    indent = symbol * NUM_SYMBOLS * depth
     res = []
     old_value = tree['old_value']
     new_value = tree['new_value']
@@ -78,8 +81,8 @@ def get_value_change(tree, key, depth=0, symbol=' ', num_symbols=4):
     return res
 
 
-def get_stylish_formatt(tree, depth=0, symbol=' ', num_symbols=4):
-    indent = symbol * num_symbols * depth
+def get_stylish_formatt(tree, depth=0, symbol=' '):
+    indent = symbol * NUM_SYMBOLS * depth
     res = []
     for key in tree:
         match tree[key]['status']:
