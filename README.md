@@ -18,5 +18,5 @@
 - `gendiff tests/fixtures/file3.json tests/fixtures/file4.json` или `gendiff tests/fixtures/file3.yaml tests/fixtures/file4.jyaml` - сравнение двух файлов, имеющие вложенную структуру формата json или yaml
 - `gendiff --format plain tests/fixtures/file3.json tests/fixtures/file4.json` - сравнение двух файлов, вывод которых осуществляется в формате plain
 - `gendiff --format json tests/fixtures/file3.json tests/fixtures/file4.json` - сравнение двух файлов, вывод которых осуществляется в формате json
-**Видео:**
+## **Видео:**
 [![asciicast](https://asciinema.org/a/tSxccgAsHLbELPbfxyOgGF1De.svg)](https://asciinema.org/a/tSxccgAsHLbELPbfxyOgGF1De)
