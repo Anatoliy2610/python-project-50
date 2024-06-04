@@ -1,9 +1,5 @@
-*.cast
 .venv/
-.vscode/
 dist/
-tests/__pycache__/
-gendiff/__pycache__/
-gendiff/scripts/__pycache__/
-gendiff/choose_formatters/__pycache__/
-node_modules/__pycache__
+__pycache__
+.vscode/
+*.cast
