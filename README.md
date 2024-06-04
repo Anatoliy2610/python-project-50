@@ -8,12 +8,12 @@
 # Вычислитель отличий
 1. проект представляет собой программу, которая определяет разницу между двумя структурами данных.
 2. пример работы программы на сравнение двух плоских файлов формата json:
-https://asciinema.org/a/zqiLHZf7FixdxYFAlnFpbB8k8
+[![asciicast](https://asciinema.org/a/zqiLHZf7FixdxYFAlnFpbB8k8)
 3. пример работы программы на сравнение двух плоских файлов формата yaml или yml:
-https://asciinema.org/a/rNvEIu6t2E1xYPdz4QA2huSeP
+[![asciicast](https://asciinema.org/a/rNvEIu6t2E1xYPdz4QA2huSeP)
 4. пример работы программы на сравнение двух файлов, имеющие вложенную структуру формата json или yaml:
-https://asciinema.org/a/Lt9vfxpQSbOeYBIhBoi6g4F0k
+[![asciicast](https://asciinema.org/a/Lt9vfxpQSbOeYBIhBoi6g4F0k)
 5. пример работы программы на сравнение двух файлов, вывод которых осуществляется в формате plain
-https://asciinema.org/a/k1SLxyBWDJagWY0fQdNInBLtC
+[![asciicast](https://asciinema.org/a/k1SLxyBWDJagWY0fQdNInBLtC)
 6. пример работы программы на сравнение двух файлов, вывод которых осуществляется в формате json
-https://asciinema.org/a/uaJhkxmnvGk1lSjXUZzpGSYET
+[![asciicast](https://asciinema.org/a/uaJhkxmnvGk1lSjXUZzpGSYET)
