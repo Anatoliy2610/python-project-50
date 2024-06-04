@@ -7,13 +7,15 @@
 
 # Вычислитель отличий
 1. проект представляет собой программу, которая определяет разницу между двумя структурами данных.
-2. пример работы программы на сравнение двух плоских файлов формата json:
-[![asciicast](https://asciinema.org/a/zqiLHZf7FixdxYFAlnFpbB8k8)](https://asciinema.org/a/zqiLHZf7FixdxYFAlnFpbB8k8)
-3. пример работы программы на сравнение двух плоских файлов формата yaml или yml:
-[![asciicast](https://asciinema.org/a/rNvEIu6t2E1xYPdz4QA2huSeP)](https://asciinema.org/a/rNvEIu6t2E1xYPdz4QA2huSeP)
-4. пример работы программы на сравнение двух файлов, имеющие вложенную структуру формата json или yaml:
-[![asciicast](https://asciinema.org/a/Lt9vfxpQSbOeYBIhBoi6g4F0k)](https://asciinema.org/a/Lt9vfxpQSbOeYBIhBoi6g4F0k)
-5. пример работы программы на сравнение двух файлов, вывод которых осуществляется в формате plain
-[![asciicast](https://asciinema.org/a/k1SLxyBWDJagWY0fQdNInBLtC)](https://asciinema.org/a/k1SLxyBWDJagWY0fQdNInBLtC)
-6. пример работы программы на сравнение двух файлов, вывод которых осуществляется в формате json
-[![asciicast](https://asciinema.org/a/uaJhkxmnvGk1lSjXUZzpGSYET)](https://asciinema.org/a/uaJhkxmnvGk1lSjXUZzpGSYET)
+2. установить проект себе можно прописав в командной строке:
+- `git clone https://github.com/Anatoliy2610/python-project-50?tab=readme-ov-file`
+- `make build`
+- `make publish`
+- `make package-install`
+3. пример работы программы:
+- `gendiff tests/fixtures/file1.json tests/fixtures/file2.json` - сравнение двух плоских файлов формата json
+- `gendiff tests/fixtures/file1.yaml tests/fixtures/file2.yaml` - сравнение двух плоских файлов формата yaml или yml
+- `gendiff tests/fixtures/file3.json tests/fixtures/file4.json` или `gendiff tests/fixtures/file3.yaml tests/fixtures/file4.jyaml` - сравнение двух файлов, имеющие вложенную структуру формата json или yaml
+- `gendiff --format plain tests/fixtures/file3.json tests/fixtures/file4.json` - сравнение двух файлов, вывод которых осуществляется в формате plain
+- `gendiff --format jsontests/fixtures/file3.json tests/fixtures/file4.json` - сравнение двух файлов, вывод которых осуществляется в формате json
+[![asciicast](https://asciinema.org)](https://asciinema.org/a/tSxccgAsHLbELPbfxyOgGF1De)
