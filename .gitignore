@@ -1,4 +1,13 @@
 .venv/
 .vscode/
 dist/
-__pycache__
+demo.cast
+demo2.cast
+demo3.cast
+demo4.cast
+demo5.cast
+tests/__pycache__/
+gendiff/__pycache__/
+gendiff/scripts/__pycache__/
+gendiff/choose_formatters/__pycache__/
+node_modules/__pycache__
