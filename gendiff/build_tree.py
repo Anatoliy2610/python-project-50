@@ -23,5 +23,4 @@ def build_tree(dict1, dict2):
                         'old_value': dict1[key],
                         'new_value': dict2[key]
                         }
-
     return res

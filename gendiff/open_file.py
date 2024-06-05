@@ -3,7 +3,7 @@ import yaml
 import os
 
 
-FILE_EXTENSIONS = {'json', 'yaml', 'yml'}
+FILE_EXTENSIONS = ('json', 'yaml', 'yml')
 
 
 def parse_json(file_path):
