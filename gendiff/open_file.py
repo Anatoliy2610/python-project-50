@@ -7,7 +7,6 @@ FILE_EXTENSIONS_JSON = ('json')
 FILE_EXTENSIONS_YAML = ('yaml', 'yml')
 
 
-
 def parse_json(file_path):
     file = json.load(open(file_path, 'r'))
     return file
