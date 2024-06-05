@@ -3,7 +3,9 @@ import yaml
 import os
 
 
-FILE_EXTENSIONS = ('json', 'yaml', 'yml')
+FILE_EXTENSIONS_JSON = ('json')
+FILE_EXTENSIONS_YAML = ('yaml', 'yml')
+
 
 
 def parse_json(file_path):
@@ -18,9 +20,9 @@ def parse_yaml(file_path):
 
 def get_extensions_file(file_path):
     _, permission = os.path.splitext(file_path)
-    if permission[1:] in FILE_EXTENSIONS:
+    if permission[1:] in FILE_EXTENSIONS_JSON:
         return parse_json(file_path)
-    elif permission[1:] in FILE_EXTENSIONS:
+    elif permission[1:] in FILE_EXTENSIONS_YAML:
         return parse_yaml(file_path)
     else:
         return 'The file is selected incorrectly!'
