@@ -64,14 +64,14 @@ def get_list_status_change(tree, strs=''):
     return res
 
 
-def get_plain_formatt(tree, res_stroka='', ):
+def get_plain_format(tree, res_stroka='', ):
     res = []
     for key in tree:
         stroka = ''
         match tree[key]['status']:
             case 'nested':
                 stroka = res_stroka + str(key) + '.'
-                res.extend(get_plain_formatt(tree[key]['value'], stroka))
+                res.extend(get_plain_format(tree[key]['value'], stroka))
             case 'add':
                 stroka = res_stroka + str(key)
                 res.extend(get_list_status_add(tree[key], stroka))
@@ -86,5 +86,5 @@ def get_plain_formatt(tree, res_stroka='', ):
     return res
 
 
-def get_result_plain_formatt(tree):
-    return '\n'.join(get_plain_formatt(tree))
+def get_result_plain_format(tree):
+    return '\n'.join(get_plain_format(tree))

@@ -1,11 +1,11 @@
-from gendiff.choose_formatters.choose_formatt import choose_formatt
-from gendiff.open_file import get_file_permission
-from gendiff.compare_trees import compare_trees
+from gendiff.choose_formatters.choose_format import choose_format
+from gendiff.open_file import get_expansion_file
+from gendiff.build_tree import build_tree
 
 
 def generate_diff(file1_path, file2_path, stylish='stylish'):
-    first_file = get_file_permission(file1_path)
-    second_file = get_file_permission(file2_path)
-    parsing = compare_trees(first_file, second_file)
-    result = choose_formatt(parsing, stylish)
+    first_file = get_expansion_file(file1_path)
+    second_file = get_expansion_file(file2_path)
+    parsing = build_tree(first_file, second_file)
+    result = choose_format(parsing, stylish)
     return result

@@ -1,4 +1,4 @@
-def compare_trees(dict1, dict2):
+def build_tree(dict1, dict2):
     shared_keys = set(dict1) | set(dict2)
     res = {}
     for key in sorted(shared_keys):
@@ -16,7 +16,7 @@ def compare_trees(dict1, dict2):
                         }
         elif type(dict1[key]) is dict and type(dict2[key]) is dict:
             res[key] = {'status': 'nested',
-                        'value': compare_trees(dict1[key], dict2[key])
+                        'value': build_tree(dict1[key], dict2[key])
                         }
         else:
             res[key] = {'status': 'change',

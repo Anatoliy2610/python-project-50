@@ -81,14 +81,14 @@ def get_value_change(tree, key, depth=0, symbol=' '):
     return res
 
 
-def get_stylish_formatt(tree, depth=0, symbol=' '):
+def get_stylish_format(tree, depth=0, symbol=' '):
     indent = symbol * NUM_SYMBOLS * depth
     res = []
     for key in tree:
         match tree[key]['status']:
             case 'nested':
                 res.append(f"{indent}    {key}: " + '{')
-                res.extend(get_stylish_formatt(tree[key]['value'], depth + 1))
+                res.extend(get_stylish_format(tree[key]['value'], depth + 1))
                 res.append(f"{indent}    " + '}')
             case 'add':
                 res.extend(get_value_add(tree[key], key, depth))
@@ -103,5 +103,5 @@ def get_stylish_formatt(tree, depth=0, symbol=' '):
     return res
 
 
-def get_result_stylish_formatt(tree):
-    return '{' + '\n' + '\n'.join(get_stylish_formatt(tree)) + '\n' + '}'
+def get_result_stylish_format(tree):
+    return '{' + '\n' + '\n'.join(get_stylish_format(tree)) + '\n' + '}'
