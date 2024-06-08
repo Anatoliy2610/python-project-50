@@ -52,33 +52,34 @@ def get_value_add(tree, key, depth=0, symbol=' '):
     return res
 
 
+def get_change(value, depth=1, symbol=' ', res=''):
+    indent = symbol * NUM_SYMBOLS * depth
+    if isinstance(value, dict):
+        for key in value:
+            res = res + '{' + '\n' + indent + '    ' + to_str(key) + ': '
+            res = res + get_change(value[key], depth + 1) + '\n' + indent + '}'
+    else:
+        return to_str(value)
+    return res
+
+
 def get_value_change(tree, key, depth=0, symbol=' '):
     indent = symbol * NUM_SYMBOLS * depth
     res = []
     old_value = tree['old_value']
     new_value = tree['new_value']
-    if not isinstance(old_value, dict) and not isinstance(new_value, dict):
-        res.append(
-            f"{indent}  - {to_str(key)}: "
-            f"{to_str(old_value)}")
-        res.append(
-            f"{indent}  + {to_str(key)}: "
-            f"{to_str(new_value)}")
-    elif isinstance(old_value, dict) and not isinstance(new_value, dict):
-        res.append(f"{indent}  - {key}: " + '{')
-        res.extend(walk_to_one_tree(tree['old_value'], depth + 1))
-        res.append(f"{indent}    " + '}')
-        res.append(
-            f"{indent}  + {to_str(key)}: "
-            f"{to_str(new_value)}")
-    elif not isinstance(old_value, dict) and isinstance(new_value, dict):
-        res.append(
-            f"{indent}  - {to_str(key)}: "
-            f"{to_str(old_value)}")
-        res.append(f"{indent}  + {key}: " + '{')
-        res.extend(walk_to_one_tree(new_value, depth + 1))
-        res.append(f"{indent}    " + '}')
+    res.append(f"{indent}  - {key}: {get_change(old_value, depth + 1)}")
+    res.append(f"{indent}  + {key}: {get_change(new_value, depth + 1)}")
     return res
+
+
+def get_value_unchange(tree, key, depth=0, symbol=' '):
+    indent = symbol * NUM_SYMBOLS * depth
+    result = []
+    result.append(
+        f"{indent}    {to_str(key)}: "
+        f"{to_str(tree)}")
+    return result
 
 
 def get_stylish_format(tree, depth=0, symbol=' '):
@@ -97,9 +98,7 @@ def get_stylish_format(tree, depth=0, symbol=' '):
             case 'change':
                 res.extend(get_value_change(tree[key], key, depth))
             case 'unchange':
-                res.append(
-                    f"{indent}    {to_str(key)}: "
-                    f"{to_str(tree[key]['value'])}")
+                res.extend(get_value_unchange(tree[key]['value'], key, depth))
     return res
 
 
