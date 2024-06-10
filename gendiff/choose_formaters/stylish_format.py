@@ -54,7 +54,7 @@ def stylish_format(tree, depth=0, symbol=' '):
                         else:
                             resl.append(f'{indent}  - {key}: {to_str(old_val)}')
                         if isinstance(new_val, dict):
-                            resl.append(f'{indent} + {key}: ' + '{')
+                            resl.append(f'{indent}  + {key}: ' + '{')
                             resl.extend(stylish_format(new_val, depth + 1))
                             resl.append(f'{indent}    ' + '}')
                         else:

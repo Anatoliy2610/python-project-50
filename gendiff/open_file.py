@@ -17,9 +17,7 @@ def get_extension_file(file_path):
 def parse_data(open_file, file_extension):
     if file_extension == FILE_EXTENSIONS_JSON:
         return json.load(open_file)
-    elif file_extension == FILE_EXTENSIONS_YAML:
-        return yaml.safe_load(open_file)
-    elif file_extension == FILE_EXTENSIONS_YML:
+    elif file_extension in (FILE_EXTENSIONS_YAML, FILE_EXTENSIONS_YML):
         return yaml.safe_load(open_file)
     else:
         return 'The file is selected incorrectly!'
