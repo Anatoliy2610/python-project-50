@@ -15,92 +15,66 @@ def to_str(value):
         return str(value)
 
 
-def walk_to_one_tree(tree, depth=0, symbol=' '):
+def stylish_format(tree, depth=0, symbol=' '):
     indent = symbol * NUM_SYMBOLS * depth
-    res = []
+    resl = []
     for key in tree:
-        if type(tree[key]) is dict:
-            res.append(f'{indent}    {key}: ' + '{')
-            res.extend(walk_to_one_tree(tree[key], depth + 1))
-            res.append(f'{indent}    ' + '}')
+        if isinstance(tree[key], dict):
+            if 'status' in tree[key]:
+                status = tree[key]['status']
+                match status:
+                    case 'nested':
+                        value = tree[key]['value']
+                        resl.append(f'{indent}    {key}: ' + '{')
+                        resl.extend(stylish_format(value, depth + 1))
+                        resl.append(f'{indent}    ' + '}')
+                    case 'add':
+                        value = tree[key]['value']
+                        if isinstance(tree[key]['value'], dict):
+                            resl.append(f'{indent}  + {key}: ' + '{')
+                            resl.extend(stylish_format(value, depth + 1))
+                            resl.append(f'{indent}    ' + '}')
+                        else:
+                            resl.append(f'{indent}  + {key}: {to_str(value)}')
+                    case 'delete':
+                        value = tree[key]['value']
+                        if isinstance(tree[key]['value'], dict):
+                            resl.append(f'{indent}  - {key}: ' + '{')
+                            resl.extend(stylish_format(value, depth + 1))
+                            resl.append(f'{indent}    ' + '}')
+                        else:
+                            resl.append(f'{indent}  - {key}: {to_str(value)}')
+                    case 'change':
+                        old_val = tree[key]['old_value']
+                        new_val = tree[key]['new_value']
+                        if isinstance(old_val, dict):
+                            resl.append(f'{indent}  - {key}: ' + '{')
+                            resl.extend(stylish_format(old_val, depth + 1))
+                            resl.append(f'{indent}    ' + '}')
+                        else:
+                            resl.append(f'{indent}  - {key}: {to_str(old_val)}')
+                        if isinstance(new_val, dict):
+                            resl.append(f'{indent} + {key}: ' + '{')
+                            resl.extend(stylish_format(new_val, depth + 1))
+                            resl.append(f'{indent}    ' + '}')
+                        else:
+                            resl.append(f'{indent}  + {key}: {to_str(new_val)}')
+                    case 'unchange':
+                        value = tree[key]['value']
+                        if isinstance(value, dict):
+                            resl.append(f'{indent}    {key}: ' + '{')
+                            resl.extend(stylish_format(value, depth + 1))
+                            resl.append(f'{indent}    ' + '}')
+                        else:
+                            resl.append(f'{indent}    {key}: {to_str(value)}')
+            else:
+                resl.append(f'{indent}    {key}: ' + '{')
+                resl.extend(stylish_format(tree[key], depth + 1))
+                resl.append(f'{indent}    ' + '}')
         else:
-            res.append(f'{indent}    {to_str(key)}: {to_str(tree[key])}')
-    return res
-
-
-def get_value_delete(tree, key, depth=0, symbol=' '):
-    indent = symbol * NUM_SYMBOLS * depth
-    res = []
-    if isinstance(tree['value'], dict):
-        res.append(f"{indent}  - {to_str(key)}: " + '{')
-        res.extend(walk_to_one_tree(tree['value'], depth + 1))
-        res.append(f"{indent}    " + '}')
-    else:
-        res.append(f"{indent}  - {to_str(key)}: {to_str(tree['value'])}")
-    return res
-
-
-def get_value_add(tree, key, depth=0, symbol=' '):
-    indent = symbol * NUM_SYMBOLS * depth
-    res = []
-    if isinstance(tree['value'], dict):
-        res.append(f"{indent}  + {key}: " + '{')
-        res.extend(walk_to_one_tree(tree['value'], depth + 1))
-        res.append(f"{indent}    " + '}')
-    else:
-        res.append(f"{indent}  + {key}: {to_str(tree['value'])}")
-    return res
-
-
-def get_change(value, depth=1, symbol=' ', res=''):
-    indent = symbol * NUM_SYMBOLS * depth
-    if isinstance(value, dict):
-        for key in value:
-            res = res + '{' + '\n' + indent + '    ' + to_str(key) + ': '
-            res = res + get_change(value[key], depth + 1) + '\n' + indent + '}'
-    else:
-        return to_str(value)
-    return res
-
-
-def get_value_change(tree, key, depth=0, symbol=' '):
-    indent = symbol * NUM_SYMBOLS * depth
-    res = []
-    old_value = tree['old_value']
-    new_value = tree['new_value']
-    res.append(f"{indent}  - {key}: {get_change(old_value, depth + 1)}")
-    res.append(f"{indent}  + {key}: {get_change(new_value, depth + 1)}")
-    return res
-
-
-def get_value_unchange(tree, key, depth=0, symbol=' '):
-    indent = symbol * NUM_SYMBOLS * depth
-    result = []
-    result.append(
-        f"{indent}    {to_str(key)}: "
-        f"{to_str(tree)}")
-    return result
-
-
-def get_stylish_format(tree, depth=0, symbol=' '):
-    indent = symbol * NUM_SYMBOLS * depth
-    res = []
-    for key in tree:
-        match tree[key]['status']:
-            case 'nested':
-                res.append(f"{indent}    {key}: " + '{')
-                res.extend(get_stylish_format(tree[key]['value'], depth + 1))
-                res.append(f"{indent}    " + '}')
-            case 'add':
-                res.extend(get_value_add(tree[key], key, depth))
-            case 'delete':
-                res.extend(get_value_delete(tree[key], key, depth))
-            case 'change':
-                res.extend(get_value_change(tree[key], key, depth))
-            case 'unchange':
-                res.extend(get_value_unchange(tree[key]['value'], key, depth))
-    return res
+            resl.append(f'{indent}    {key}: {to_str(tree[key])}')
+    return resl
 
 
 def get_result_stylish_format(tree):
-    return '{' + '\n' + '\n'.join(get_stylish_format(tree)) + '\n' + '}'
+    return '{' + '\n' + '\n'.join(stylish_format(tree)) + '\n' + '}'

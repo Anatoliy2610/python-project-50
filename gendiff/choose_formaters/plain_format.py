@@ -14,25 +14,25 @@ def to_str(value):
         return f"'{str(value)}'"
 
 
-def plain_format(tree, name_dir=''):
+def plain_format(tree, name_property=''):
     result = []
     for key in tree:
         name_key = ''
         match tree[key]['status']:
             case 'nested':
-                name_key = name_dir + str(key) + '.'
+                name_key = name_property + str(key) + '.'
                 result.extend(plain_format(tree[key]['value'], name_key))
             case 'add':
-                name_key = name_dir + str(key)
+                name_key = name_property + str(key)
                 result.append(
                     f"Property {to_str(name_key)} "
                     f"was added with value: {to_str(tree[key]['value'])}")
             case 'delete':
-                name_key = name_dir + str(key)
+                name_key = name_property + str(key)
                 result.append(
                     f"Property {to_str(name_key)} was removed")
             case 'change':
-                name_key = name_dir + str(key)
+                name_key = name_property + str(key)
                 result.append(
                     f"Property {to_str(name_key)} was updated. "
                     f"From {to_str(tree[key]['old_value'])} "
