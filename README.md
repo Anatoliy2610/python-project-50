@@ -15,7 +15,7 @@
 3. пример работы программы:
 - `gendiff tests/fixtures/file1.json tests/fixtures/file2.json` - сравнение двух плоских файлов формата json
 - `gendiff tests/fixtures/file1.yaml tests/fixtures/file2.yaml` - сравнение двух плоских файлов формата yaml или yml
-- `gendiff tests/fixtures/file3.json tests/fixtures/file4.json` или `gendiff tests/fixtures/file3.yaml tests/fixtures/file4.jyaml` - сравнение двух файлов, имеющие вложенную структуру формата json или yaml
+- `gendiff tests/fixtures/file3.json tests/fixtures/file4.json` или `gendiff tests/fixtures/file3.yaml tests/fixtures/file4.yaml` - сравнение двух файлов, имеющие вложенную структуру формата json или yaml
 - `gendiff --format plain tests/fixtures/file3.json tests/fixtures/file4.json` - сравнение двух файлов, вывод которых осуществляется в формате plain
 - `gendiff --format json tests/fixtures/file3.json tests/fixtures/file4.json` - сравнение двух файлов, вывод которых осуществляется в формате json
 ## **Видео:**

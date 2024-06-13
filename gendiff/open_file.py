@@ -23,9 +23,7 @@ def parse_data(open_file, file_extension):
         return 'The file is selected incorrectly!'
 
 
-def get_data_file(file_path1, file_path2):
-    open_file1, file_extension1 = get_extension_file(file_path1)
-    open_file2, file_extension2 = get_extension_file(file_path2)
-    data_file1 = parse_data(open_file1, file_extension1)
-    data_file2 = parse_data(open_file2, file_extension2)
-    return data_file1, data_file2
+def get_data_file(file_path):
+    open_file, file_extension = get_extension_file(file_path)
+    data_file = parse_data(open_file, file_extension)
+    return data_file
